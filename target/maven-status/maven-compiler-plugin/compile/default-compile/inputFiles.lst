@@ -1,0 +1,17 @@
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\controller\BookController.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\controller\LoanController.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\controller\UserController.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\DoswLibraryApplication.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\dto\BookDTO.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\dto\LoanDTO.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\dto\UserDTO.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\exception\BookNotAvailableException.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\exception\GlobalExceptionHandler.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\model\Book.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\model\Loan.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\model\LoanStatus.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\model\User.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\service\BookService.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\service\LoanService.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\service\UserService.java
+C:\Users\jorge\IdeaProjects\DOSW-Library\src\main\java\edu\eci\dosw\util\ValidationUtil.java
