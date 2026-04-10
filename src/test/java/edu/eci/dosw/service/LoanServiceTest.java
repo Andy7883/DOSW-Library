@@ -5,6 +5,7 @@ import edu.eci.dosw.model.Book;
 import edu.eci.dosw.model.Loan;
 import edu.eci.dosw.model.LoanStatus;
 import edu.eci.dosw.model.User;
+import edu.eci.dosw.model.Role;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +27,13 @@ class LoanServiceTest {
     @Test
     void shouldLoanBookSuccessfully() {
         Book book = new Book("B1", "Clean Architecture", "Robert Martin");
-        User user = new User("U1", "Pedro");
+        User user = new User(
+                "U1",
+                "Pedro",
+                "pedro01",
+                "1234",
+                Role.USER
+        );
 
         bookService.addBook(book, 1);
         userService.addUser(user);
@@ -43,7 +50,14 @@ class LoanServiceTest {
     @Test
     void shouldThrowExceptionWhenBookIsNotAvailable() {
         Book book = new Book("B2", "Domain-Driven Design", "Eric Evans");
-        User user = new User("U2", "Ana");
+        User user = new User(
+                "U1",
+                "Pedro",
+                "pedro01",
+                "1234",
+                Role.USER
+        );
+
 
         bookService.addBook(book, 0);
         userService.addUser(user);

@@ -1,6 +1,7 @@
 package edu.eci.dosw.service;
 
 import edu.eci.dosw.model.User;
+import edu.eci.dosw.model.Role;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,13 @@ class UserServiceTest {
 
     @Test
     void shouldAddAndRetrieveUser() {
-        User user = new User("U1", "Alice");
+        User user = new User(
+                "U1",
+                "Pedro",
+                "pedro01",
+                "1234",
+                Role.USER
+        );
 
         userService.addUser(user);
 

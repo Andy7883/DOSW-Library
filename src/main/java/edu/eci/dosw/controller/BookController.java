@@ -1,15 +1,13 @@
 package edu.eci.dosw.controller;
 
 import edu.eci.dosw.dto.BookDTO;
-import edu.eci.dosw.model.Book;
+import edu.eci.dosw.persistence.document.BookDocument;
 import edu.eci.dosw.service.BookService;
 import edu.eci.dosw.util.ValidationUtil;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/books")
@@ -21,6 +19,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
+    @PreAuthorize("hasRole('LIBRARIAN')")
     @PostMapping
     public void addBook(@RequestBody BookDTO dto) {
         ValidationUtil.notBlank(dto.id, "Book id is required");
@@ -28,12 +27,17 @@ public class BookController {
         ValidationUtil.notBlank(dto.author, "Author is required");
         ValidationUtil.positive(dto.quantity, "Quantity must be positive");
 
-        Book book = new Book(dto.id, dto.title, dto.author);
-        bookService.addBook(book, dto.quantity);
+        bookService.addBook(
+                dto.id,
+                dto.title,
+                dto.author,
+                dto.quantity
+        );
     }
 
+    @PreAuthorize("hasAnyRole('USER','LIBRARIAN')")
     @GetMapping
-    public Collection<Book> getAllBooks() {
+    public Collection<BookDocument> getAllBooks() {
         return bookService.getAllBooks();
     }
 }

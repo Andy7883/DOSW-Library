@@ -1,8 +1,7 @@
 package edu.eci.dosw.dto;
 
-public class UserDTO {
-    public String id;
-    public String name;
+public class LoginDTO {
+
     public String username;
     public String password;
 }

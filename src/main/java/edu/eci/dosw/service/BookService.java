@@ -1,40 +1,42 @@
 package edu.eci.dosw.service;
 
-import edu.eci.dosw.model.Book;
+import edu.eci.dosw.persistence.document.BookDocument;
+import edu.eci.dosw.persistence.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class BookService {
 
-    private final Map<String, Book> books = new HashMap<>();
-    private final Map<String, Integer> stock = new HashMap<>();
+    private final BookRepository bookRepository;
 
-    public void addBook(Book book, int quantity) {
-        books.put(book.getId(), book);
-        stock.put(book.getId(), quantity);
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
-    public Collection<Book> getAllBooks() {
-        return books.values();
+    public void addBook(String id, String title, String author, int quantity) {
+        bookRepository.save(new BookDocument(id, title, author, quantity));
     }
 
-    public Book getBookById(String id) {
-        return books.get(id);
+    public Collection<BookDocument> getAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    public BookDocument getBookById(String bookId) {
+        return bookRepository.findById(bookId).orElse(null);
     }
 
     public boolean isAvailable(String bookId) {
-        return stock.getOrDefault(bookId, 0) > 0;
+        BookDocument book = getBookById(bookId);
+        return book != null && book.getQuantity() > 0;
     }
 
     public void decreaseStock(String bookId) {
-        stock.put(bookId, stock.get(bookId) - 1);
-    }
-
-    public void increaseStock(String bookId) {
-        stock.put(bookId, stock.get(bookId) + 1);
+        BookDocument book = getBookById(bookId);
+        if (book != null) {
+            book.decreaseQuantity();
+            bookRepository.save(book);
+        }
     }
 }
